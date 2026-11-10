@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16865b">
+<link rel="manifest" href="./manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="带上风雨">
+<title>带上风雨 · 智能垃圾分类</title>
+<style>
+:root{--green:#16865b;--deep:#106b49;--mint:#e9f7ef;--bg:#f4f8f5;--ink:#18352a;--muted:#718078;--line:#e4ece7;--white:#fff;--shadow:0 12px 35px rgba(22,91,61,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}button,input{font:inherit}button{cursor:pointer}.app{max-width:520px;min-height:100dvh;margin:auto;background:var(--bg);padding-bottom:88px;position:relative}.top{padding:22px 20px 16px;background:linear-gradient(135deg,#e9f8ef,#f8fcf9)}.topline{display:flex;justify-content:space-between;align-items:center}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:21px;letter-spacing:-.5px}.logo{width:38px;height:38px;border-radius:13px;background:var(--green);color:white;display:grid;place-items:center;font-size:21px}.tag{font-size:11px;color:var(--deep);background:#d6f0e1;padding:6px 10px;border-radius:20px;font-weight:700}.hello{margin-top:24px}.hello h1{font-size:25px;line-height:1.3;margin:0 0 7px}.hello p{margin:0;color:var(--muted);font-size:13px}.content{padding:17px 16px}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:var(--shadow);margin-bottom:15px}.section-title{font-weight:800;font-size:16px;margin:0 0 4px}.sub{font-size:12px;color:var(--muted);margin:0 0 14px}.upload{border:1.5px dashed #9bcbb0;background:#f6fcf8;border-radius:17px;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:15px;position:relative;overflow:hidden}.upload img{max-width:100%;max-height:230px;object-fit:contain;border-radius:12px}.upload .camera{font-size:36px;margin-bottom:8px}.upload strong{font-size:14px}.upload small{color:var(--muted);margin-top:5px}.actions{display:flex;gap:9px;margin-top:12px}.btn{border:0;border-radius:13px;padding:12px 14px;font-weight:750;font-size:13px}.primary{background:var(--green);color:white;flex:1}.secondary{background:var(--mint);color:var(--deep)}.btn:disabled{opacity:.45;cursor:not-allowed}.status{font-size:12px;color:var(--muted);margin-top:11px;min-height:18px}.progress{height:6px;background:#edf2ee;border-radius:8px;overflow:hidden;margin-top:8px;display:none}.progress span{display:block;width:35%;height:100%;background:var(--green);animation:move 1.2s infinite alternate}@keyframes move{to{width:90%}}.result{display:none}.result-head{display:flex;align-items:center;gap:12px}.emoji{width:48px;height:48px;border-radius:15px;background:var(--mint);display:grid;place-items:center;font-size:26px}.result-name{font-size:18px;font-weight:850}.confidence{margin-left:auto;color:var(--green);font-weight:800;font-size:13px}.result-desc{font-size:13px;color:#52645a;line-height:1.65;margin:13px 0}.tip{background:#f4faf6;border-radius:13px;padding:12px;font-size:12px;line-height:1.6}.manual{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.chip{border:1px solid var(--line);background:white;border-radius:30px;padding:8px 11px;font-size:12px;color:#52645a}.chip.active{background:var(--mint);border-color:#9bcbb0;color:var(--deep);font-weight:750}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.tile{background:#f8fbf9;border:1px solid var(--line);border-radius:15px;padding:12px 5px;text-align:center}.tile b{display:block;font-size:22px}.tile span{font-size:11px;color:#53645a}.search{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;background:#fbfdfb;outline:none}.search:focus{border-color:#82b99a}.lookup-result{font-size:13px;line-height:1.6;margin-top:10px;color:#52645a}.knowledge{display:grid;grid-template-columns:1fr 1fr;gap:10px}.know{background:#f6faf7;border-radius:15px;padding:13px}.know b{font-size:13px}.know p{font-size:11px;color:var(--muted);line-height:1.5;margin:5px 0 0}.points{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(120deg,#e3f6e9,#f4fbf6);border-radius:17px;padding:15px}.points strong{font-size:27px;color:var(--deep)}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 8px calc(9px + env(safe-area-inset-bottom));z-index:4}.nav button{border:0;background:none;color:#89968e;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:62px}.nav button span{font-size:20px}.nav button.active{color:var(--green);font-weight:800}.page{display:none}.page.active{display:block}.smallprint{font-size:10px;color:#87938b;line-height:1.5;margin:12px 2px}.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#20372b;color:white;padding:10px 15px;border-radius:30px;font-size:12px;display:none;z-index:9;max-width:90%;text-align:center}.history-item{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.history-item:last-child{border:0}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="topline"><div class="brand"><div class="logo">♻</div>带上风雨</div><div class="tag">SMART GREEN LIFE</div></div>
+ <div class="hello"><h1>让垃圾找到正确的家</h1><p>拍一拍、识一识，轻松做好垃圾分类。</p></div>
+</header>
+<main class="content">
+<section id="home" class="page active">
+ <div class="panel">
+  <h2 class="section-title">AI 智能识别</h2><p class="sub">上传或拍摄一张物品照片，AI 将分析它的类别</p>
+  <div class="upload" id="dropArea">
+   <div id="emptyPrompt"><div class="camera">📷</div><strong>点击选择图片，或直接拍照</strong><small>支持 JPG、PNG、WEBP；建议主体清晰、背景简单</small></div>
+   <img id="preview" alt="待识别图片预览" hidden>
+  </div>
+  <input id="fileInput" type="file" accept="image/*" capture="environment" hidden>
+  <div class="actions"><button class="btn secondary" id="chooseBtn">📁 选择图片</button><button class="btn primary" id="recognizeBtn" disabled>✨ 开始 AI 识别</button></div>
+  <div class="status" id="status">首次使用需下载视觉模型，请保持网络畅通。</div><div class="progress" id="progress"><span></span></div>
+ </div>
+ <div class="panel result" id="result">
+  <h2 class="section-title">识别结果</h2><p class="sub">模型预测仅供参考，可手动修正分类</p>
+  <div class="result-head"><div class="emoji" id="resultEmoji">♻️</div><div><div class="result-name" id="resultName">可回收物</div><div class="sub" id="resultItem" style="margin:3px 0 0">识别对象</div></div><div class="confidence" id="confidence">—</div></div>
+  <p class="result-desc" id="resultDesc"></p><div class="tip" id="resultTip"></div>
+  <div style="font-size:12px;font-weight:800;margin-top:14px">分类不准确？选择正确类别</div><div class="manual" id="manualChips"></div>
+ </div>
+ <div class="panel"><h2 class="section-title">四大垃圾类别</h2><p class="sub">快速了解分类标准</p><div class="grid">
+  <div class="tile"><b>♻️</b><span>可回收物</span></div><div class="tile"><b>🍌</b><span>厨余垃圾</span></div><div class="tile"><b>☣️</b><span>有害垃圾</span></div><div class="tile"><b>🗑️</b><span>其他垃圾</span></div>
+ </div></div>
+ <div class="panel"><h2 class="section-title">分类小贴士</h2><p class="sub">投放前做好简单处理，分类更准确</p><div class="knowledge">
+  <div class="know"><b>🧴 清洁再回收</b><p>饮料瓶尽量倒空、简单冲洗并压扁。</p></div>
+  <div class="know"><b>🔋 有害单独放</b><p>废电池、过期药品等按当地要求单独投放。</p></div>
+ </div></div>
+</section>
+<section id="lookup" class="page">
+ <div class="panel"><h2 class="section-title">垃圾分类查询</h2><p class="sub">输入物品名称，快速查看投放建议</p><input class="search" id="searchInput" placeholder="例如：奶茶杯、旧报纸、香蕉皮"><div class="lookup-result" id="lookupResult">试试搜索“电池”或“塑料瓶”。</div></div>
+ <div class="panel"><h2 class="section-title">常见物品</h2><div class="manual" id="commonItems"></div></div>
+</section>
+<section id="pointsPage" class="page">
+ <div class="panel"><div class="points"><div><div style="font-size:12px;color:#527261">我的环保积分</div><strong id="pointsValue">0</strong><div style="font-size:11px;color:#718078">每次完成识别可获得积分</div></div><div style="font-size:42px">🏅</div></div></div>
+ <div class="panel"><h2 class="section-title">积分规则</h2><p class="sub">让每一次正确分类都更有意义</p><div class="history-item"><span>完成一次 AI 识别</span><b>+5 分</b></div><div class="history-item"><span>手动纠正分类</span><b>+2 分</b></div><div class="history-item"><span>每日首次查询</span><b>+1 分</b></div><p class="smallprint">积分保存在当前浏览器本地，不同设备或清除浏览器数据后不会自动同步。</p></div>
+ <div class="panel"><h2 class="section-title">识别记录</h2><div id="history"><p class="sub">暂时还没有记录，去识别第一个物品吧。</p></div></div>
+</section>
+<section id="profile" class="page">
+ <div class="panel"><h2 class="section-title">关于 EcoSort</h2><p style="font-size:13px;line-height:1.8;color:#52645a">EcoSort 是一款面向日常生活场景的智能垃圾分类助手，结合图像识别、分类知识库与环保积分，帮助用户更方便地进行垃圾分类。</p></div>
+ <div class="panel"><h2 class="section-title">使用说明</h2><p class="smallprint">1. 在首页上传物品照片并点击“开始 AI 识别”。<br>2. 查看预测类别、置信度和投放建议。<br>3. 若识别不准确，可手动选择类别。<br>4. 在查询页输入物品名称，或在积分页查看记录。</p><p class="smallprint">本演示使用浏览器端视觉模型进行零样本图像分类。模型识别的是图像语义，不等同于专业垃圾检测设备；包装组合物、污染物及当地特殊规定可能导致分类不同。最终请以所在地最新垃圾分类目录为准。</p></div>
+</section>
+</main>
+<nav class="nav">
+ <button class="active" data-page="home"><span>⌂</span>识别</button><button data-page="lookup"><span>⌕</span>分类查询</button><button data-page="pointsPage"><span>🏅</span>环保积分</button><button data-page="profile"><span>☻</span>我的</button>
+</nav>
+<div class="toast" id="toast"></div>
+</div>
+<script type="module">
+import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
+env.allowLocalModels = false;
+env.useBrowserCache = true;
+
+const $ = id => document.getElementById(id);
+const categories = {
+ recyclable:{name:'可回收物',emoji:'♻️',desc:'适宜回收利用的生活废弃物，如干净的纸类、金属、玻璃和部分塑料。',tip:'投放建议：尽量保持清洁干燥，压扁或整理后投入可回收物收集容器。'},
+ food:{name:'厨余垃圾',emoji:'🍌',desc:'易腐烂的生物质生活废弃物，如剩饭剩菜、果皮、菜叶等。',tip:'投放建议：尽量沥干水分，去除明显包装物，按当地要求投放。'},
+ hazardous:{name:'有害垃圾',emoji:'☣️',desc:'对人体健康或自然环境造成直接或潜在危害的废弃物，如废电池、灯管和部分化学品。',tip:'投放建议：保持包装完整，避免破损泄漏，单独交至有害垃圾收集点。'},
+ other:{name:'其他垃圾',emoji:'🗑️',desc:'除可回收物、厨余垃圾和有害垃圾之外的其他生活废弃物。',tip:'投放建议：尽量沥干水分，装袋后投入其他垃圾收集容器。'}
+};
+const labels = [
+ ['a clean plastic bottle','a glass bottle','a metal drink can','cardboard or paper','a newspaper','a plastic food container','a used battery','a fluorescent light bulb','a banana peel','vegetable scraps','leftover cooked food','a tea bag','a dirty tissue paper','a disposable diaper','a ceramic plate','a broken mirror','a used face mask','a toothpaste tube','a milk carton','a styrofoam food box'],
+ ['可回收物','厨余垃圾','有害垃圾','其他垃圾']
+];
+const prompts = [
+ {text:'a clean plastic bottle',cat:'recyclable',item:'塑料饮料瓶'},
+ {text:'a glass bottle',cat:'recyclable',item:'玻璃瓶'},
+ {text:'a metal drink can',cat:'recyclable',item:'金属易拉罐'},
+ {text:'cardboard or paper',cat:'recyclable',item:'纸类/纸箱'},
+ {text:'a newspaper',cat:'recyclable',item:'旧报纸'},
+ {text:'a plastic food container',cat:'recyclable',item:'塑料食品盒'},
+ {text:'a used battery',cat:'hazardous',item:'废旧电池'},
+ {text:'a fluorescent light bulb',cat:'hazardous',item:'荧光灯管'},
+ {text:'a banana peel',cat:'food',item:'香蕉皮'},
+ {text:'vegetable scraps',cat:'food',item:'蔬菜残余'},
+ {text:'leftover cooked food',cat:'food',item:'剩饭剩菜'},
+ {text:'a tea bag',cat:'food',item:'茶包'},
+ {text:'a dirty tissue paper',cat:'other',item:'使用过的纸巾'},
+ {text:'a disposable diaper',cat:'other',item:'尿不湿'},
+ {text:'a ceramic plate',cat:'other',item:'陶瓷餐具'},
+ {text:'a broken mirror',cat:'other',item:'碎镜片'},
+ {text:'a used face mask',cat:'other',item:'废弃口罩'},
+ {text:'a toothpaste tube',cat:'other',item:'牙膏软管'},
+ {text:'a milk carton',cat:'recyclable',item:'牛奶纸盒'},
+ {text:'a styrofoam food box',cat:'other',item:'泡沫餐盒'}
+];
+let classifier=null, selectedFile=null, currentCategory=null, currentItem='', score=0;
+let points=Number(localStorage.getItem('ecosort_points')||0);
+let history=JSON.parse(localStorage.getItem('ecosort_history')||'[]');
+$('pointsValue').textContent=points;
+function toast(msg){$('toast').textContent=msg;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2300)}
+function switchPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id))}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>switchPage(b.dataset.page)));
+$('chooseBtn').onclick=()=>$('fileInput').click();
+$('dropArea').onclick=e=>{if(e.target.id!=='preview')$('fileInput').click()};
+$('fileInput').onchange=e=>{const f=e.target.files?.[0];if(f)loadFile(f)};
+function loadFile(file){if(!file.type.startsWith('image/'))return toast('请选择图片文件');if(file.size>12*1024*1024)return toast('图片不能超过 12MB');selectedFile=file;const url=URL.createObjectURL(file);$('preview').src=url;$('preview').hidden=false;$('emptyPrompt').hidden=true;$('recognizeBtn').disabled=false;$('result').style.display='none';$('status').textContent=`已选择：${file.name}`;}
+$('dropArea').addEventListener('dragover',e=>{e.preventDefault();$('dropArea').style.borderColor='#16865b'});
+$('dropArea').addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)loadFile(f)});
+async function getClassifier(){if(!classifier){$('status').textContent='正在加载 AI 视觉模型（首次可能需要几十秒）…';$('progress').style.display='block';classifier=await pipeline('zero-shot-image-classification','Xenova/clip-vit-base-patch32',{ quantized:true });}return classifier}
+$('recognizeBtn').onclick=async()=>{
+ if(!selectedFile)return;
+ $('recognizeBtn').disabled=true;$('progress').style.display='block';$('status').textContent='正在分析图片，请稍候…';
+ try{
+  const model=await getClassifier();
+  const predictions=await model($('preview'),labels[0]);
+  const top=predictions[0];const match=prompts.find(p=>p.text===top.label);
+  if(!match)throw new Error('模型未能匹配到分类标签');
+  currentCategory=match.cat;currentItem=match.item;score=top.score;
+  renderResult(currentCategory,currentItem,score);
+  addPoints(5);addHistory(currentItem,currentCategory,Math.round(score*100));
+  $('status').textContent='识别完成。请结合物品材质、污染情况和当地规则核对。';
+ }catch(err){console.error(err);$('status').textContent='模型加载或识别失败：'+(err.message||'请检查网络后重试');toast('识别失败，请检查网络连接');}
+ finally{$('recognizeBtn').disabled=false;$('progress').style.display='none'}
+};
+function renderResult(cat,item,confidence){
+ currentCategory=cat;$('result').style.display='block';$('resultEmoji').textContent=categories[cat].emoji;$('resultName').textContent=categories[cat].name;$('resultItem').textContent='识别对象：'+item;$('confidence').textContent=confidence==null?'手动选择':`匹配度 ${Math.round(confidence*100)}%`;$('resultDesc').textContent=categories[cat].desc;$('resultTip').textContent=categories[cat].tip;
+ $('manualChips').innerHTML='';Object.entries(categories).forEach(([key,c])=>{const b=document.createElement('button');b.className='chip'+(key===cat?' active':'');b.textContent=c.emoji+' '+c.name;b.onclick=()=>{renderResult(key,item,null);addPoints(2);toast('已更新分类，感谢纠正！')};$('manualChips').append(b)});
+}
+function addPoints(n){points+=n;localStorage.setItem('ecosort_points',points);$('pointsValue').textContent=points}
+function addHistory(item,cat,confidence){history.unshift({item,cat,confidence,time:new Date().toLocaleString('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})});history=history.slice(0,20);localStorage.setItem('ecosort_history',JSON.stringify(history));renderHistory()}
+function renderHistory(){$('history').innerHTML=history.length?history.map(h=>`<div class="history-item"><span>${categories[h.cat].emoji} ${escapeHtml(h.item)} · ${h.time}</span><b>${categories[h.cat].name}</b></div>`).join(''):'<p class="sub">暂时还没有记录，去识别第一个物品吧。</p>'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+renderHistory();
+const dictionary=[
+ ['塑料瓶','recyclable','塑料饮料瓶通常属于可回收物，倒空并简单清洁后投放。'],['矿泉水瓶','recyclable','倒空、简单冲洗并压扁后投放。'],['易拉罐','recyclable','金属罐通常属于可回收物。'],['纸箱','recyclable','保持干燥、拆开压平后回收。'],['报纸','recyclable','干燥、整洁的废纸可回收。'],['玻璃瓶','recyclable','玻璃容器通常可回收，注意轻放防破碎。'],['香蕉皮','food','果皮属于厨余垃圾。'],['苹果核','food','果核等易腐有机物通常属于厨余垃圾。'],['剩饭','food','沥干汤汁后按当地规定投放。'],['菜叶','food','蔬菜残余属于厨余垃圾。'],['电池','hazardous','废电池按种类和当地规定投入有害垃圾收集点。'],['灯管','hazardous','荧光灯管等含汞灯管属于有害垃圾，注意防破损。'],['过期药品','hazardous','过期药品通常属于有害垃圾，按当地规定投放。'],['纸巾','other','使用过的纸巾通常属于其他垃圾。'],['口罩','other','使用过的一次性口罩通常按其他垃圾处理；特殊情况遵循当地指引。'],['尿不湿','other','使用过的尿不湿通常属于其他垃圾。'],['陶瓷','other','碎陶瓷通常属于其他垃圾，注意包裹防止划伤。'],['奶茶杯','other','被污染的复合材质杯通常按其他垃圾处理；杯盖、吸管需视材质和当地规则判断。']
+];
+function lookup(q){const hit=dictionary.find(x=>x[0].includes(q)||q.includes(x[0]));if(!q)return '请输入物品名称。';if(!hit)return '暂未找到该物品。可以尝试更通用的名称，或参考当地垃圾分类目录。';const c=categories[hit[1]];return `<b>${c.emoji} ${c.name}</b><br>${escapeHtml(hit[2])}<br><span style="color:#849188">提示：分类可能因地区及物品具体材质、污染情况而不同。</span>`}
+$('searchInput').addEventListener('input',()=>{$('lookupResult').innerHTML=lookup($('searchInput').value.trim())});
+['塑料瓶','香蕉皮','电池','纸巾','奶茶杯','纸箱','过期药品'].forEach(x=>{const b=document.createElement('button');b.className='chip';b.textContent=x;b.onclick=()=>{$('searchInput').value=x;$('lookupResult').innerHTML=lookup(x)};$('commonItems').append(b)});
+
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.warn));
+}
+</script>
+</body>
+</html>
