@@ -122,7 +122,7 @@ $('recognizeBtn').onclick=async()=>{
  $('recognizeBtn').disabled=true;$('progress').style.display='block';$('status').textContent='正在分析图片，请稍候…';
  try{
   const model=await getClassifier();
-  const predictions=await model($('preview'),labels[0]);
+  const predictions = await model($('preview').src, labels[0]);
   const top=predictions[0];const match=prompts.find(p=>p.text===top.label);
   if(!match)throw new Error('模型未能匹配到分类标签');
   currentCategory=match.cat;currentItem=match.item;score=top.score;
